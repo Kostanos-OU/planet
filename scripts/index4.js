@@ -69,7 +69,7 @@ class App {
     const scale = this.blobs[0].scale;
     return gsap.timeline()
       .to(scale, {
-        duration: 3,
+        duration: 5,
         x: 1,
         y: 1,
         z: 1,
