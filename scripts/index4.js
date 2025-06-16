@@ -10,9 +10,9 @@ class App {
     this.addBlobs();
 
     // Main timeline: content animation + grow animation
-    this.tl = gsap.timeline({ delay: 0.25 })
+    this.tl = gsap.timeline({ delay: 0 })   // removed initial 0.25s delay
       .add(this.article())
-      .add(this.growBlob(), '-=1.5');
+      .add(this.growBlob(), 0);
   }
 
   addBlobs() {
