@@ -1,5 +1,7 @@
-import Gl from './gl';
-import Blob from './gl/Blob';
+// scripts/index4.js
+
+import Gl from './gl/index.js';
+import Blob from './gl/Blob.js';
 import gsap from 'gsap';
 
 class App {
@@ -7,14 +9,14 @@ class App {
     this.blobs = [];
     this.addBlobs();
 
-    this.tl = gsap.timeline({ delay: 0.25 });
-    this.tl
+    // Main timeline: content animation + grow animation
+    this.tl = gsap.timeline({ delay: 0.25 })
       .add(this.article())
-      .add(this.animBlobs(), '-=1.5');
+      .add(this.growBlob(), '-=1.5');
   }
 
   addBlobs() {
-    // the original “rightmost” blob parameters:
+    // Create the “rightmost” blob with its original params
     const blob = new Blob(
       3,      // size
       0.3,    // speed
@@ -24,8 +26,12 @@ class App {
       Math.PI // strength/offset
     );
     blob.position.set(0, 0, 0);
-    this.blobs = [ blob ];
+
+    // Start at ~10px size: tiny scale (will grow to scale=1)
+    blob.scale.set(0.01, 0.01, 0.01);
+
     Gl.scene.add(blob);
+    this.blobs = [blob];
   }
 
   article() {
@@ -34,29 +40,41 @@ class App {
     const contentClip = { x: 0 };
 
     tl
-      .from('.title div, .subtitle div', { duration: 2, xPercent: -100 })
-      .from('.menu__inner-translate', { duration: 1.5, yPercent: -100 }, '-=1.5')
+      .from('.title div, .subtitle div', {
+        duration: 2,
+        xPercent: -100,
+      })
+      .from('.menu__inner-translate', {
+        duration: 1.5,
+        yPercent: -100,
+      }, '-=1.5')
       .to(contentClip, {
         duration: 1.5,
         x: 100,
-        onUpdate: () => content.style.setProperty('--clip', `${contentClip.x}%`)
+        onUpdate: () => {
+          content.style.setProperty('--clip', `${contentClip.x}%`);
+        },
       }, '-=1.25')
-      .from('.play', { duration: 1, scale: 0, rotate: '-62deg' }, '-=1.5');
+      .from('.play', {
+        duration: 1,
+        scale: 0,
+        rotate: '-62deg',
+      }, '-=1.5');
 
     return tl;
   }
 
-  animBlobs() {
-    const tl = gsap.timeline();
+  growBlob() {
+    // Animate scale from 0.01 → 1 over 3 seconds
     const scale = this.blobs[0].scale;
-
-    tl.from(scale, {
-      duration: 2,
-      x: 0, y: 0, z: 0,
-      ease: 'power3.inOut'
-    });
-
-    return tl;
+    return gsap.timeline()
+      .to(scale, {
+        duration: 3,
+        x: 1,
+        y: 1,
+        z: 1,
+        ease: 'power3.inOut'
+      });
   }
 }
 

@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "start": "parcel serve index.html",
-    "build": "parcel build index5.html --public-url ./ --dist-dir docs"
+    "build": "parcel build index4.html index5.html --public-url ./ --dist-dir docs"
   },
   "repository": {
     "type": "git",

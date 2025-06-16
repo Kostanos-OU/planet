@@ -1,14 +1,11 @@
+<!-- index4.html – single-centered blob on black background -->
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Creative WebGL Blobs | All Demos | Codrops</title>
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="stylesheet" href="https://use.typekit.net/dmq3uhj.css">
-	<link rel="stylesheet" href="css/base.css">
-	<!-- feature‐detect must stay nomodule -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>WebGL Blob</title>
 	<script nomodule>
 		document.documentElement.className = "js";
 		(function () {
@@ -18,56 +15,24 @@
 			var ok = !!(window.CSS && window.CSS.supports &&
 				window.CSS.supports("font-weight", "var(--tmp-var)"));
 			style.remove();
-			if (!ok) alert("Please view this demo in a modern browser that supports CSS Variables.");
+			if (!ok) alert("Please view this in a modern browser that supports CSS Variables.");
 		})();
 	</script>
 	<style>
-		/* some basic layout so they stack */
-		.demo-container {
-			margin-bottom: 4rem;
-		}
-
-		.demo-container+.demo-container {
-			border-top: 1px solid #ddd;
-			padding-top: 4rem;
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			background: #000;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	</style>
 </head>
 
-<body class="all-demos loading">
-
-	<div class="demo-container demo-1">
-		<h2>Demo 1</h2>
-		<main>
-			<!-- copy the inner `<main>` from your original index.html here -->
-			<a class="logo dib" aria-label="Wave logo homepage">~</a>
-			<!-- … rest of Demo 1 markup … -->
-		</main>
-	</div>
-
-	<div class="demo-container demo-2">
-		<h2>Demo 2</h2>
-		<main>
-			<!-- copy the inner `<main>` from index2.html here -->
-			<a class="logo dib" aria-label="Wave logo homepage">~</a>
-			<!-- … rest of Demo 2 markup … -->
-		</main>
-	</div>
-
-	<div class="demo-container demo-3">
-		<h2>Demo 3</h2>
-		<main>
-			<!-- copy the inner `<main>` from index3.html here -->
-			<a class="logo dib" aria-label="Wave logo homepage">~</a>
-			<!-- … rest of Demo 3 markup … -->
-		</main>
-	</div>
-
-	<!-- load all three modules: -->
-	<script type="module" src="scripts/index.js"></script>
-	<script type="module" src="scripts/index2.js"></script>
-	<script type="module" src="scripts/index3.js"></script>
-
+<body class="loading">
+	<script type="module" src="scripts/index4.js"></script>
 </body>
 
 </html>
