@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "parcel build index5.html --public-url ./ --dist-dir docs"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  }
+}
