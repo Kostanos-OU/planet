@@ -14,17 +14,11 @@ class App {
   }
 
   addBlobs() {
-    // the original “rightmost” blob parameters:
-    const blob = new Blob(
-      3,      // size
-      0.3,    // speed
-      0.25,   // color
-      2.0,    // freq
-      0.15,   // density
-      Math.PI // strength/offset
-    );
+    // Right-most blob’s original params:
+    // size: 3, speed: 0.25, color: 0.5, freq: 1.5, density: 0.12, offset: 0
+    const blob = new Blob(3, 0.25, 0.5, 1.5, 0.12, 0);
     blob.position.set(0, 0, 0);
-    this.blobs = [ blob ];
+    this.blobs = [blob];
     Gl.scene.add(blob);
   }
 
