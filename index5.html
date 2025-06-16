@@ -1,0 +1,38 @@
+<!-- index5.html – single-centered blob on black background -->
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WebGL Blob</title>
+  <script nomodule>
+    document.documentElement.className = "js";
+    (function () {
+      var style = document.createElement("style");
+      style.innerHTML = "root: { --tmp-var: bold; }";
+      document.head.appendChild(style);
+      var ok = !!(window.CSS && window.CSS.supports &&
+        window.CSS.supports("font-weight", "var(--tmp-var)"));
+      style.remove();
+      if (!ok) alert("Please view this in a modern browser that supports CSS Variables.");
+    })();
+  </script>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body class="loading">
+  <script type="module" src="scripts/index4.js"></script>
+</body>
+
+</html>
