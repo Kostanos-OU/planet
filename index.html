@@ -1,0 +1,30 @@
+<!-- index.html (Demo 1) -->
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Creative WebGL Blobs | Demo 1 | Codrops</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dmq3uhj.css">
+	<link rel="stylesheet" href="css/base.css">
+	<script nomodule>
+		document.documentElement.className = "js";
+		(function () {
+			var style = document.createElement("style");
+			style.innerHTML = "root: { --tmp-var: bold; }";
+			document.head.appendChild(style);
+			var ok = !!(window.CSS && window.CSS.supports &&
+				window.CSS.supports("font-weight", "var(--tmp-var)"));
+			style.remove();
+			if (!ok) alert("Please view this demo in a modern browser that supports CSS Variables.");
+		})();
+	</script>
+</head>
+
+<body class="demo-1 loading">
+	<!-- … page markup … -->
+	<script type="module" src="scripts/index.js"></script>
+</body>
+
+</html>

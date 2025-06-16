@@ -1,0 +1,41 @@
+<!-- index2.html (Demo 2 with black background) -->
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creative WebGL Blobs | Demo 2 | Codrops</title>
+  <link rel="stylesheet" href="https://use.typekit.net/dmq3uhj.css">
+  <link rel="stylesheet" href="css/base.css">
+  <style>
+    body { background-color: #000; }
+  </style>
+  <script nomodule>
+    document.documentElement.className = "js";
+    (function(){
+      var style = document.createElement("style");
+      style.innerHTML = "root: { --tmp-var: bold; }";
+      document.head.appendChild(style);
+      var ok = !!(window.CSS && window.CSS.supports &&
+                 window.CSS.supports("font-weight","var(--tmp-var)"));
+      style.remove();
+      if (!ok) alert("Please view this demo in a modern browser that supports CSS Variables.");
+    })();
+  </script>
+</head>
+<body class="demo-2 loading">
+  <main>
+    <a class="logo dib" aria-label="Wave logo homepage">~</a>
+    <h2 class="page-title line line--vertical">
+      <div class="dib" style="--clip:100%;">Creative WebGL Blobs</div>
+    </h2>
+    <nav class="demos">
+      <div class="dib oh"><a href="index.html" class="frame__demo">demo 1</a></div>
+      <div class="dib oh"><a href="index2.html" class="frame__demo frame__demo--current">demo 2</a></div>
+      <div class="dib oh"><a href="index3.html" class="frame__demo">demo 3</a></div>
+    </nav>
+    <!-- rest of your content -->
+  </main>
+  <script type="module" src="scripts/index2.js"></script>
+</body>
+</html>

@@ -1,21 +1,20 @@
-// point at the real files in your gl/ folder:
-import Gl from './gl/index.js';
-import Blob from './gl/Blob.js';
-// ← no `import gsap` here — GSAP is now on window.gsap
+import Gl from './gl';
+import Blob from './gl/Blob';
+import gsap from 'gsap';
 
 class App {
   constructor() {
     this.blobs = [];
     this.addBlobs();
 
-    // use the global gsap
-    this.tl = gsap.timeline({ delay: 0.25 })
+    this.tl = gsap.timeline({ delay: 0.25 });
+    this.tl
       .add(this.article())
       .add(this.animBlobs(), '-=1.5');
   }
 
   addBlobs() {
-    // the original “rightmost” blob params:
+    // the original “rightmost” blob parameters:
     const blob = new Blob(
       3,      // size
       0.3,    // speed
@@ -25,8 +24,8 @@ class App {
       Math.PI // strength/offset
     );
     blob.position.set(0, 0, 0);
-    Gl.scene.add(blob);
     this.blobs = [ blob ];
+    Gl.scene.add(blob);
   }
 
   article() {
@@ -34,7 +33,7 @@ class App {
     const content = document.querySelector('.content span');
     const contentClip = { x: 0 };
 
-    return tl
+    tl
       .from('.title div, .subtitle div', { duration: 2, xPercent: -100 })
       .from('.menu__inner-translate', { duration: 1.5, yPercent: -100 }, '-=1.5')
       .to(contentClip, {
@@ -43,16 +42,21 @@ class App {
         onUpdate: () => content.style.setProperty('--clip', `${contentClip.x}%`)
       }, '-=1.25')
       .from('.play', { duration: 1, scale: 0, rotate: '-62deg' }, '-=1.5');
+
+    return tl;
   }
 
   animBlobs() {
-    return gsap.timeline().from(this.blobs[0].scale, {
+    const tl = gsap.timeline();
+    const scale = this.blobs[0].scale;
+
+    tl.from(scale, {
       duration: 2,
-      x: 0,
-      y: 0,
-      z: 0,
+      x: 0, y: 0, z: 0,
       ease: 'power3.inOut'
     });
+
+    return tl;
   }
 }
 
